@@ -10,7 +10,9 @@ function App() {
 
     const num = data.verse.verse_key
 
-    const response2 = await fetch("https://api.quran.com/api/v4/quran/verses/uthmani?verse_key=56%3A51");
+    const uri = 'https://api.quran.com/api/v4/quran/verses/uthmani?verse_key=' + encodeURIComponent(num);
+
+    const response2 = await fetch(uri);
     const data2 = await response2.json()
 
     // for (let i in data.words){

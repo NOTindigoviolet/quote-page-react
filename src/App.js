@@ -1,13 +1,11 @@
 import React, { useState, useCallback, useEffect } from "react";
-import ArabicScript from "./components/ArabicScript";
-import EnglishScript from "./components/EnglishScript";
+import TranslatedScript from "./components/TranslatedScript";
 import "./App.css";
 
 function App() {
-  const [eng, setEnglish] = useState();
-  const [ara, setArabic] = useState([]);
+  const [script, setScript] = useState([]);
 
-  const fetchEnglishHandler = useCallback(async () => {
+  const fetchScriptHandler = useCallback(async () => {
     try {
       const response = await fetch(
         "https://api.quran.com/api/v4/verses/random?language=en&translations=131"
@@ -31,41 +29,33 @@ function App() {
 
       console.log(num);
 
-      const transformedEnglish = data.verse.translations.map((engData) => {
+      const transformedData = () => {
         return {
           verse: data.verse.verse_key,
-          txt: engData.text,
+          eng: data.verse.translations[0].text,
+          arb: data2.verses[0].text_uthmani,
         };
-      });
+      };
 
-      const transformedArabic = data2.verses.map((araData) => {
-        return {
-          txt: araData.text_uthmani,
-        };
-      });
-
-      setEnglish(transformedEnglish);
-      setArabic(transformedArabic);
+      setScript(transformedData);
     } catch (error) {
       console.log(error);
     }
   }, []);
 
   useEffect(() => {
-    fetchEnglishHandler();
-  }, [fetchEnglishHandler]);
+    fetchScriptHandler();
+  }, [fetchScriptHandler]);
 
-  let englishTranslation = <EnglishScript eng={eng} />;
-  let arabicScript = <ArabicScript ara={ara} />;
+  let translatedScript = <TranslatedScript text={script}/>;
 
   return (
     <React.Fragment>
       <header className="App-header">
         <p>HELLO</p>
       </header>
-      <section>{englishTranslation}</section>
-      <section>{arabicScript}</section>
-    </React.Fragment>
+      <section>{translatedScript}</section>
+    </React.Fragment>  
   );
 }
 

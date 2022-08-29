@@ -1,0 +1,21 @@
+.script {
+    margin: 1rem;
+    padding: 1rem;
+    background-color: #514f53;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    border-radius: 12px;
+    text-align: center;
+    color: white;
+}
+
+.script h1 {
+    font-size: 2rem;
+    color: #ece91c; 
+}
+
+.script h3 {
+    font-size: 1rem;
+    padding: 1rem;
+    color: #ffaa22;
+    margin: 0;
+}

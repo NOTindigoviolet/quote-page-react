@@ -1,6 +1,7 @@
 import React, { useState, useCallback, useEffect } from "react";
 import TranslatedScript from "./components/TranslatedScript";
 import "./App.css";
+import VerseForm from "./components/VerseForm";
 
 function App() {
   const [script, setScript] = useState([]);
@@ -47,7 +48,7 @@ function App() {
     fetchScriptHandler();
   }, [fetchScriptHandler]);
 
-  let translatedScript = <TranslatedScript text={script}/>;
+  let translatedScript = <TranslatedScript text={script} />;
 
   return (
     <React.Fragment>
@@ -55,7 +56,10 @@ function App() {
         <p>HELLO</p>
       </header>
       <section>{translatedScript}</section>
-    </React.Fragment>  
+      <section>
+        <VerseForm />
+      </section>
+    </React.Fragment>
   );
 }
 

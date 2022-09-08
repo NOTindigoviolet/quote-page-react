@@ -7,6 +7,10 @@ function VerseForm(props) {
         <label htmlFor="surah">Enter Surah</label>
         <input type="number" id="surah" />
       </div>
+      <div className="form-main">
+        <label htmlFor="ayah">Enter Ayah</label>
+        <input type="number" id="ayah" />
+      </div>
       <div>
         <button>Submit</button>
       </div>
